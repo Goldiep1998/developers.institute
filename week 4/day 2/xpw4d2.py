@@ -60,16 +60,20 @@ print(basket.count("Apples"))
 basket.clear()
 print(basket)
 
-#9 While doesn't make sense to use. Used for loop instead. 
+#9
 mylist = [1,2,3,4,5,6,7,8]
-for i in range (len(mylist),0,-1):
-    print(i)
+pos = len(mylist) - 1
+while pos >= 0:
+    print(mylist[pos])
+    pos -=1
     
-#10 While doesn't make sense to use. Used for loop instead.   
+#10
 mylist = [1,2,3,4,5,6,7,8]
-for i in mylist:
-    if i % 2== 0:
-        print(i)
+pos = 0
+while pos < len(mylist) + 1:
+    if pos % 2== 0:
+        print(pos)
+    pos +=1    
 
 #11
 mult = []
@@ -79,6 +83,6 @@ for i in range(0,31,3):
 print(mult)
 
 #12
-for num in range (1500, 2700):
+for num in range (1500, 2701):
     if num % 7 == 0 and num % 5 == 0:
         print(num)
