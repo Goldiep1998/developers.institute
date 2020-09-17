@@ -1,0 +1,17 @@
+-- INSERT INTO student (name, last_name, birth_date)
+-- VALUES ('Marc', 'Dupont', '1998-11-02'),('Yoan', 'Durant', '2010-03-12'),('Lea', 'Martin', '1987-07-24'),('Sarah', 'Benichou', '1996-04-07'),('lea', 'Dupont', '1980-03-10' ), ('Omer', 'Simpson', '1980-03-10')
+-- INSERT INTO name, last_name, birth_date)
+-- VALUES ('Goldie', 'Perlmann', '1998-03-18')
+-- INSERT INTO students (name, last_name, birth_date)
+-- VALUES ('John', 'Smith', '1987-04-18'), ('Ben', 'Barns', '1967-09-26')
+-- SELECT * FROM students
+-- SELECT name, last_name FROM students
+-- SELECT name, last_name FROM students WHERE id = 2
+-- SELECT name, last_name FROM students WHERE name = 'Marc' AND last_name = 'Dupont'
+-- SELECT name, last_name FROM students WHERE name = 'Marc' OR last_name = 'Dupont'
+-- SELECT name, last_name FROM students WHERE name LIKE '%a%'
+-- SELECT name, last_name FROM students WHERE name LIKE 'A%'
+-- SELECT name,last_name FROM students WHERE name LIKE '%a'
+-- SELECT name, last_name FROM students WHERE name LIKE '%a_'
+-- SELECT name, last_name FROM students WHERE id = 1 OR id = 3
+-- SELECT name, last_name, birth_date FROM students WHERE birth_date = '1/01/2000'or birth_date > '1/01/2000'  
