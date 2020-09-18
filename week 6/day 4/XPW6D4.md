@@ -46,4 +46,12 @@ CREATE TABLE dup_countries(
 	region_id VARCHAR (100)
 );
 
-<!-- UP TO NUMBER 5/6 -->
+<!-- 9 (jobs) -->
+
+CREATE TABLE jobs(
+	job_id SERIAL PRIMARY KEY,
+	job_title VARCHAR (50) DEFAULT '',
+	min_salary INT DEFAULT 8000,
+	max_salary INT DEFAULT NULL
+);
+
