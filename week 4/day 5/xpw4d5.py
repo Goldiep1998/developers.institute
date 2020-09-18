@@ -52,13 +52,14 @@
 #     print(sqaured)
 # sqaure()
 
-#6 COME BACK TO THIS!
+#6 
 
+# list_nums = [2,3,3,5,7,7,8]
 # def mono_check(list_nums):
-#     return (all(list_nums[i] <= A[i + 1] for i in range(len(list_nums) - 1)) or
-#             all(list_nums[i] >= A[i + 1] for i in range(len(list_nums) - 1))) 
+#     return (all(list_nums[i] <= list_nums[i + 1] for i in range(len(list_nums) - 1)) or
+#             all(list_nums[i] >= list_nums[i + 1] for i in range(len(list_nums) - 1))) 
 
-# list_nums = [1,2,3,3,5,6,7]
+
 # results = mono_check(list_nums)
 # print(results)
 
@@ -99,60 +100,81 @@
 #     results = sum/len(num_dict)
 #     return(results)
 
-#10 Words weirdly
+#10 
 
-# num_list = [10,20]
+
 # def common_div(num1, num2):
+#     num_list= []
 #     for num in range(1, num1 + 1):
-#         if num1 % num == 0:
-#           if num2 % num == 0:
+#         if num1 % num == 0 and num2 % num == 0 and num != 1:
 #             num_list.append(num)
-#     print(num_list)      
+#     print(num_list)     
+# common_div(10,20)     
 
-#11 NOT DONE
+# 11 
 
-#12 Works but weirdly.
+# def lbsearch(search_list, char, lb):
+#     if lb == 'linear':
+#         for chars in range(len(search_list)):
+#             if search_list[chars] == char:
+#                 return chars
+#         return -1
+
+
+#     elif lb == 'binary':
+#         first = 0
+#         last = len(search_list)-1
+#         index = -1
+#     while (first <= last) and (index == -1):
+#         mid = (first+last)//2
+#         if search_list[mid] == char:
+#             index = mid
+#         else:
+#             if char<search_list[mid]:
+#                 last = mid -1
+#             else:
+#                 first = mid +1
+#     return index
+
+# print(lbsearch([1,2,50,74],50,'linear'))
+# print(lbsearch([1,2,50,74],74,'binary'))
+
+#12 
 
 # num = 15
 # def prime_check (num):
 #     if num > 1:
-#         for num2 in range(2,num//2):
+#         for num2 in range(2,num):
 #             if num % num2 == 0:
 #                 return False
-#             else:
-#                 return True
+#         else:
+#             return True
 #     else:
 #         return False
 # result = prime_check(num)
 # print(result) 
 
-#13 not done
 
-# n_list = [1,2,2,3,4,5]
-# def index_even(num_list):
-#   even_list = []
-#   for index in range(len(num_list)):
-#       if index % 2 == 0 and index != 0 and num_list[index] % 2 == 0:
-#       even_list.append(num_list[index])
-#   return even_list
-# even_list = index_even(n_list)
-# print(even_list)
+#14
 
-#14 NODONE
 
-# type_list = ["hi",2]
-# def type_counter(type_list):
+# def type_counter(**kwargs):
 #     numbers = 0
 #     string = 0
 #     boolean = 0
 #     a_float = 0
-#     for item in type_list:
-#         if isinstance(item, int) == True:
+#     for item in kwargs.values():
+#         if isinstance(item, int) == True and not isinstance(item, bool):
 #             numbers += 1
-#         elif item.is_string == True:
+#         if isinstance(item, str)== True:
 #             string += 1
-#         elif type(item) == "bool":
-    #         boolean += 1
-    #     elif type(item) == "float":
-    #         a_float += 1
-    # print(numbers)
+#         if isinstance(item, bool) == True:
+#             boolean += 1
+#         if isinstance(item, float) == True:
+#             a_float += 1
+
+#     return numbers, string, boolean, a_float
+
+# result = type_counter(a=1,b='string',c=1.0,d=True,e=False)
+
+# print(result)
