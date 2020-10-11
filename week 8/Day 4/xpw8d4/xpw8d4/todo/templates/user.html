@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+{{block.super}}
+<form method="post">
+    <h1 style="padding-top: 25px; padding-bottom: 30px;">Sign in</h1>
+    {% csrf_token %}
+    {{user_form.as_p}} <br>
+    <h6>Have no account? Click the register button below to set up an account.</h6> <br>
+    <button type="submit" class="btn btn-outline-info">Sign in</button>
+    <button type="button" class="btn btn-outline-info"><a href="{% url 'register' %}" class="text-info"> Register</a></button>
+</form>
+{% endblock %}

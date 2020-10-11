@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block content %}
+    {{ block.super }}
+    <div class="animals">
+        <h1 class = 'headings' >Animal list:</h1>
+        {% for animal in animals %}
+        <ul>
+            <li><a href="{% url 'info' id=animal.id%}"><h3>{{animal.animal_name}}</h3></a></li>
+        </ul>
+        {% endfor %}
+        <h5 style="font-style: italic;"> #Type family/id of family into url to see what animals are from the same family.</h5>
+    </div>
+
+    
+    {% endblock %}
+</body>
+</html>

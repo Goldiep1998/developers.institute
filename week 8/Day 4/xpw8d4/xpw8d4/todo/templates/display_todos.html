@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    {{block.super}}
+    {% for todos in lst %}
+            {{todos}}
+            {% for category in todos.category.all %}
+                <p>{{category.name}}</p>
+            {% endfor %}
+    {% endfor %}
+{% endblock %}
+

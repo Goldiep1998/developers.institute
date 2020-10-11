@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+{{block.super}}
+
+
+    <form method="POST" class="post-form">
+        <div class="form-group" style="margin-right: 70%;">
+
+        {% csrf_token %}
+        
+        <p>Title: {{form.title}}</p>
+        <p>Details: {{form.details}}</p>
+        <p>Has been done: {{form.has_been_done}}</p>
+        <p>Deadline date: {{form.deadline_date}}</p>
+        <p>Date completion: {{form.date_completion}}</p>
+        <p>{{form.category.label}}: {{form.category}}</p>
+        </div>
+  
+    <button type="submit" class="btn btn-outline-info">Submit</button> <br>
+    
+    {% if messages %}
+    <div class="alert alert-success" role="alert"> 
+        {% for message in messages %}
+        {{ message }} 
+        {% endfor %}
+    </div>
+   
+{% endif %}
+ 
+    </form>
+ 
+{% endblock %}

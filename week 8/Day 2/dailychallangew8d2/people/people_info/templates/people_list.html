@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static%}
+    {% block content %}
+    {{block.super}}
+    {% for person in people %}
+    <p style = "text-decoration: underline; color: orange;">{{person.name}}</p>
+    <p>ID: {{person.id}}</p>
+    <p>Age: {{person.age}}</p>
+    <p>Country: {{person.country}}</p>
+    {% endfor %}
+    
+    {% endblock %}

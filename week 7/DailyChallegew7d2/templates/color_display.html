@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colors</title>
+    <style>
+.square {
+  height: 50px;
+  width: 50px
+}
+.circle {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%
+}
+.oval {
+  height: 50px;
+  width: 100px;
+  border-radius: 50%
+}
+.triangle{
+    width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 100px solid
+}.rectangle {
+  height: 50px;
+  width: 100px
+}
+.parallelogram {
+	width: 100px;
+	height: 50px;
+	transform: skew(20deg)
+}
+    </style>
+</head>
+<body>
+    {%if color_dict['color'] == 'red'%}
+    <p class = "oval" style = "background-color:{{color_dict['color']}}"></p>
+    {%elif color_dict['color'] == 'blue'%}
+    <p class = "square" style = "background-color:{{color_dict['color']}}"></p>
+    {%elif color_dict['color'] == 'black'%}
+    <p class = "circle" style = "background-color:{{color_dict['color']}}"></p>
+    {%elif color_dict['color'] == 'green'%}
+    <p class = "triangle" style = "border-bottom-color: {{color_dict['color']}}"></p>
+    {%elif color_dict['color'] == 'white'%}
+    <p class = "rectangle" style = "background-color:{{color_dict['color']}}"></p>
+    {%elif color_dict['color'] == 'yellow'%}
+    <p class = "parallelogram" style = "background-color:{{color_dict['color']}}"></p>
+    {% endif %}
+
+
+
+</body>
+</html>

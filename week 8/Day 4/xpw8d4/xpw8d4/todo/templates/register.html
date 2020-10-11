@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+{{block.super}}
+<form method="post">
+    <h1 style="padding-top: 25px; padding-bottom: 30px;">Register</h1>
+    {% csrf_token %}
+    {{register_form.as_p}} <br>
+    <button type="submit" class="btn btn-outline-info">Submit</button>
+    
+</form>
+
+{% endblock %}

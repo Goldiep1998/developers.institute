@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product_info</title>
+    <style>
+        #keys{
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: red;">{{product['Name']}}</h1>
+    {% for key, value in product.items()%}
+
+    <p id="keys"> <u>{{key}}:</u></p> <p>{{value}} </p>
+    {%endfor%}
+</body>
+</html>

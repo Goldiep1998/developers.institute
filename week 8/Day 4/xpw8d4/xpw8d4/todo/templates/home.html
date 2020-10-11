@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{block.super}}
+<h1 style="padding-top: 25px; padding-bottom: 30px;">Welcome, {{user.username}}!</h1>
+
+<button type="button"class="btn btn-outline-info"> <a href="{% url 'display_todos' id=user.id%}" class="text-info">Display todo list</a></button> 
+<button type="button"class="btn btn-outline-info"><a href="{% url 'todo' id=user.id%}" class="text-info">Add another todo</a></button>
+       
+
+{% endblock %}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+
+</head>
+<body>
+    <h1 style="color: red;">Products</h1>
+    <ul class="products-list">
+        {% for item in products %}
+        <li class="product">
+          <p>{{ item['Name'] }} <a href="{{ url_for('display_product', product_id = item['ProductId'])}}"> See more info </a></p>      
+        </li>
+        {% endfor %}
+    </ul>
+
+
+</body>
+</html>

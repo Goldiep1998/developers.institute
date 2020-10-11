@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block content %}
+    {{ block.super }}
+    <div class="animals">
+        <h1 class = 'headings'>Animals in this family:</h1>
+        {% for animal in animals %}
+        <ul>
+        <li>{{animal.animal_name}}</li>
+        </ul>
+        {% endfor %}
+        <a class = "btn btn-secondary" href="{% url 'animals' %}">Back</a>
+    </div>
+    {% endblock %}
+</body>
+</html>

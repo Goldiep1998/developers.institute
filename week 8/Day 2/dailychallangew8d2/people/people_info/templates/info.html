@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static%}
+    {% block content %}
+    {{block.super}}
+    <p style = "text-decoration: underline; color: orange;">{{person.name}}</p>
+    <p>ID: {{person.id}}</p>
+    <p>Age: {{person.age}}</p>
+    <p>Country: {{person.country}}</p>
+    {% include 'backbtn.html' %}
+    {% endblock %}
+    
