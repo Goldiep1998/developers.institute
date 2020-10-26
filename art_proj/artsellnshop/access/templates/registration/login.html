@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="center">
+    <form method="POST" class="col s5">
+        <div class="row ">
+            <div class="input-field col s5">
+                <h1>Login</h1>
+                {% csrf_token %}
+                <h6>{{form.as_p}}</h6>
+                <input class="waves-effect indigo darken btn" type="submit" value='Login'>
+                <a class="waves-effect indigo darken btn" href="{% url 'sign_up' %}">Sign up</a>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

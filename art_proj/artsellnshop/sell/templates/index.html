@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container center">
+  <h1 class='title'>Upload Image</h1>
+<form method="post" enctype="multipart/form-data" class="mt-4">
+  <div class="row">
+    <div class="col col-4">
+    {% csrf_token %}
+    {{ form.as_p }}
+    </div>
+  </div>
+    <button class="waves-effect indigo darken btn" type="submit">Upload</button>
+</form>
+  {% if img_obj %}
+    <p style="color: rgb(108, 155, 39); ">{{img_obj.title}} has been successfully uploaded:</p>
+    <img src="{{ img_obj.image.url}}" alt="connect" style="max-height:100px"> <br>
+    <a class="waves-effect indigo darken btn" href="{% url 'upload' %}">Upload another</a>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block navbar %}
+{% endblock navbar%}
+{% block content %}
+<form method="POST" class="mt-4">
+    <div class="row">
+        <div class="col col-4">
+            <h1 style="color:yellowgreen">Login</h1>
+            {% csrf_token %}
+            <h6 style="color: red;">{{form.as_p}}</h6>
+            <input class="btn btn-dark" type="submit" value='Login'>
+            <a class="btn btn-dark" href="{% url 'sign_up' %}">Sign up</a>
+        </div>
+    </div>
+</form>
+{% endblock %}

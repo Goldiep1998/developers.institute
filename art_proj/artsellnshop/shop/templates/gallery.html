@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div class="lg-card white">
+<p class="title">GALLERY</p>
+
+<div class="row">
+{% for image in images %}
+    <div class="col s3">
+      <div class="card z-depth-5">
+        <div class="card-image">
+        <img src="{{ image.image.url }}" class="materialboxed responsive-img" style="height: 150px;">
+        </div>
+        <div class="card-content">
+          <p class="card-title">{{image.title}}</p>
+          <a class="waves-effect indigo darken btn" href="{% url 'image-info' image.id %}">See More</a>
+          {% if request.user == image.seller %}
+          <a class="waves-effect indigo darken btn" href="{% url 'delete' image.id %}">delete</a>
+          <a class="waves-effect indigo darken btn" href="{% url 'edit' image.id %}">edit</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+{% endfor %}
+</div>
+</div>
+</div>
+{% if messages %}
+{% for message in messages %}
+	<script>M.toast({html:'{{message}}'})</script>
+{% endfor %}
+{% endif %}
+{% endblock %}
+

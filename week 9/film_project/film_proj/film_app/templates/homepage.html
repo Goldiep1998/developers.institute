@@ -1,0 +1,42 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+<h1 style ='color:yellowgreen; text-align: center;padding-top: 20px;'>FILMS</h1>
+<div class = 'wrapper' style="display: flex; padding-top: 20px; margin-left: auto;
+margin-right: auto; width:max-content;">
+{% for items in film%}
+{% if items.category.all %}
+<div class="card text-center" style="width: 18rem; border-width: 5px; border-color: red; margin-left: 40px;">
+    <div class="card-body">
+      <h5 class="card-title" style="color: yellowgreen;">{{items.title}}</h5>
+      <p class="card-text">Release Date : {{items.release_date}} <br> 
+        Origin Country : {{items.created_in_country}} <br>
+        Category : {% for categories in items.category.all %}{{categories.name}}{% if not forloop.last %}, {% endif %}
+        {% endfor %} <br>
+        Available In:{% for countries in items.available_in_countries.all %}
+        {{countries.name}}{% if not forloop.last %},{% endif %}
+        {% endfor %} <br>
+        Director :{% for directors in items.director.all %}
+        {{directors.first_name}} {{directors.last_name}}{% if not forloop.last %},{% endif %}
+        <a href="{% url 'delete_film' items.id %}">delete</a>
+        {% endfor %}</p> 
+    </div> 
+</div>
+{% endif %}
+{% endfor %}
+</div>
+
+<h1 style ='color:yellowgreen; text-align: center; padding-top: 20px;'>DIRECTORS</h1>
+<div class = 'wrapper' style="display: flex; padding-top: 20px; margin-left: auto;
+margin-right: auto; width:max-content;">
+{% for items in director %}
+<div class="card text-center" style="width: 10rem; border-width: 5px; border-color: red; margin-left: 40px;">
+  <div class="card-body">
+    <h5 class="card-title" style="color: yellowgreen;">{{items.first_name}}</h5>
+    <p class="card-text">{{items.last_name}} </p>
+  </div> 
+</div>
+{% endfor %}
+
+</div>
+{% endblock %}

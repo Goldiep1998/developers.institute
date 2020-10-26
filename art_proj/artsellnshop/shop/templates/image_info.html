@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container center">
+    <div class="lg-card white">
+        <div class="card-content black-text">
+          <p class="title">{{image.title}}</p>
+          <img src="{{ image.image.url }}" style="height: 500px;">
+          <p>{{image.description}}</p>
+          <p>Price: {{image.price}}</p>
+          <a class="waves-effect indigo darken btn" href="{% url 'buy' image.id %}">buy</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
