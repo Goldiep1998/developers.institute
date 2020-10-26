@@ -7,7 +7,5 @@ class SignUpForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ["username", "first_name", "last_name", "password1", "password2", "email", "date_joined"]
-        def __init__(self, *args, **kwargs):
-            super().__init__(*args, **kwargs)
-            self.fields['date_joined'].widget.attrs['readonly'] = True
+        fields = ["username", "first_name", "last_name", "password1", "password2", "email"]
+
