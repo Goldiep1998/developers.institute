@@ -19,3 +19,6 @@ def create_profile(sender, created, instance, **kwargs):
         email_from = settings.EMAIL_HOST_USER 
         recipient_list = [instance.email,]
         send_mail( subject, message, email_from, recipient_list) 
+
+def __str__(self):
+    return self.user

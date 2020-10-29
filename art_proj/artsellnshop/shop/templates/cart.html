@@ -1,5 +1,25 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+<div class="container center">
+    <div class="lg-card white">
+        <div class="card-content black-text">
+            <p class="title">Cart</p>  
+            {% for item in order.items.all %}
+            <div style="display: flex;">
+            <p>{{item.item.title}}}</p>
+            <p>Price: {{item.item.price}}</p>
+            <img src="{{ item.item.image.url }}" height="100">
+            <a class="waves-effect indigo darken btn" href="{% url 'remove_item' item.item.id %}">Remove</a>
+            </div>
+            {% endfor %}
+            <a class="waves-effect indigo darken btn" href="{% url 'gallery' %}">Go to Gallery</a>
+            {% if cart is not empty %}
+            <a class="waves-effect indigo darken btn" href="{% url 'buy' order.id %}">Buy</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
 
 {% endblock %}

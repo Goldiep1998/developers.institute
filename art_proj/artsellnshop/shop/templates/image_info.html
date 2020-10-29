@@ -8,7 +8,7 @@
           <img src="{{ image.image.url }}" style="height: 500px;">
           <p>{{image.description}}</p>
           <p>Price: {{image.price}}</p>
-          <a class="waves-effect indigo darken btn" href="{% url 'buy' image.id %}">buy</a>
+          <a class="waves-effect indigo darken btn" href="{% url 'add_to_cart' image.id %}">Add to Cart</a>
         </div>
     </div>
 </div>

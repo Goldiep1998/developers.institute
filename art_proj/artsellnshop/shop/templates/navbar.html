@@ -7,8 +7,10 @@
         <li><a href="{% url 'about' %}">About</a></li>
         <li><a href="{% url 'gallery' %}">Gallery</a></li> 
         <li>{% if not request.user.is_anonymous %}
+        <li><a href="{% url 'order_list' %}">Orders</a>  
+          <li><a href="{% url 'cart' %}">Cart</a> 
+          <li><a href="{% url 'profile' %}">Profile</a>  
           <li><a href="{% url 'logout' %}">Logout</a>   
-        <li><a href="{% url 'profile' %}">Profile</a>  
         <li style="color: rgb(235, 206, 152); padding-right: 15px;">{{user.username}} is logged in</li>{% else %} <a href="{% url 'login' %}">Login</a> </li> {% endif %}</li>
       </ul>
     </div>

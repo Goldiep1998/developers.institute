@@ -7,6 +7,7 @@ from random import randint
 from django.conf import settings
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
+from .models import Order, OrderItems
 
 
 # Create your views here.
@@ -30,15 +31,49 @@ def image_info(request, id):
     image = Image.objects.get(id=id)
     return render(request, 'image_info.html', {'image': image})
 
-@login_required()
-def buy(request, id):
+
+def add_to_cart(request, id):
+    order, created = Order.objects.get_or_create(finalized=False, buyer=request.user)
     image = Image.objects.get(id=id)
-    image.status = 'sold'
+    image.status='in cart'
     image.save()
-    order = order_number()
-    email_buyer(request, order)
-    email_seller(request, image)
-    messages.success(request, f'You have purchased {image.title}')
+    item, created = OrderItems.objects.get_or_create(item=image, order=order)
+    return render(request, 'cart.html', {'order':order})
+
+def cart(request):
+    order, created = Order.objects.get_or_create(finalized=False, buyer=request.user)
+    return render(request, 'cart.html', {'order':order})
+
+def remove_item(request, id):
+    image = Image.objects.get(id=id)
+    image.status='for-sale'
+    image.save()
+    item = OrderItems.objects.get(item=image).delete()
+    order = Order.objects.get(finalized=False, buyer=request.user)
+    return render(request, 'cart.html', {'order':order})
+
+
+def order_list(request):
+    orders = Order.objects.filter(finalized='True', buyer=request.user)
+    return render(request, 'order_list.html', {'orders':orders})
+
+def order(request,id):
+    items = Order.objects.get(id=id)
+    return render(request, 'order.html', {'items':items})
+
+
+@login_required()
+def buy(request, id):   
+    orderitems = OrderItems.objects.filter(order=id)
+    for items in orderitems:
+        image = Image.objects.filter(orderitems__item=items.item)
+        image.update(status='sold')
+    order = Order.objects.get(id=id)
+    order.finalized='True'
+    order.save()
+    # email_buyer(request, order)
+    # email_seller(request, image)
+    # messages.success(request, f'You have purchased {image.title}')
     return redirect('gallery')
 
 @login_required()
@@ -67,14 +102,6 @@ def edit(request, id):
             return render(request, 'edit_image.html', {'form': form})
     else:
         raise Error("You do not have permission to access this data.")
-
-def order_number():
-    order_list = {}
-    number = randint(0,999999999)
-    while number in order_list:
-        number = randint(0,999999999)
-    order_list.update({number: number})
-    return number
         
 def email_buyer(request, order):
     subject = f'Your Order #{order}'
